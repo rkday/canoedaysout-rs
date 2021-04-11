@@ -1,0 +1,75 @@
+ <html><head><meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+     <title>Trips sorted by {{ sort_type }} </title>
+
+<meta name="keywords" content="canadian,open,canoedaysout,canoe,canoes,day,days,out,Keith,Day,trip,trips,river,rivers,waterway,waterways,canal,canals,paddle,paddles,canoeing,family,families,still,water,launch,site,relax,relaxing,gentle,journey,journeys">
+<link href="/Canoestyle.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+.style2 {color: #FFFFFF}
+.style3 {color: #000000}
+-->
+</style>
+
+ </head>
+<div style="position: relative;">
+<table border="0" cellpadding="0" cellspacing="2" width="960">
+  <tbody><tr>
+        <td width="786" rowspan="4"><a href="/"><img src="/images/Title_Bar.jpg" alt="Canoe Days Out" width="785" height="112"></a></td>
+    <td class="menubtn" height="27" width="164"><div class="style1 style2" align="center"><a href="/index.htm" class="menulnk">Home</a></div></td>
+  </tr>
+  <tr>
+    <td class="menubtn" height="27" width="164"><div class="style1 style2" align="center"><a href="/county.htm" class="menulnk">Days Out By County</a> </div></td>
+  </tr>
+  <tr>
+    <td class="menubtn" height="27" width="164"><div class="style1" align="center">
+      <div class="style2" align="center"> <a href="/waterway.htm" class="menulnk">Days Out By Waterway</a></div>
+    </div></td>
+  </tr>
+  <tr>
+    <td class="menubtn" height="27" width="164"><div class="style1 style2" align="center"><a href="/Input.htm" class="menulnk">Create Your Own Trip </a></div></td>
+  </tr>
+</tbody></table>
+<div id="Layer1" style="position: absolute; width: 874px; height: 54px; z-index: 1; left: 119px; top: 115px;"><!-- TemplateBeginEditable name="Page Title" -->
+  <div style="text-align: center;">
+<br>
+<br>
+<h2 style="color: rgb(0, 0, 102); display: inline;">Trips sorted by {{ sort_type }} ({{ trips | length }}) </h2>
+  </div>
+<!-- TemplateEndEditable --></div>
+<div id="Layer2" style="position: absolute; width: 873px; height: 358px; z-index: 2; left: 50px; top: 182px;"><!-- TemplateBeginEditable name="Text" -->
+<br>
+
+{% for trip in trips %}
+<a href="/trip/{{trip.id}}" class="triplink">
+
+{% if sort_type == "county"%}
+{{trip.county}}, {{trip.waterway}}, 
+{% else %}
+{{trip.waterway}}, {{trip.county}}, 
+{%endif%}
+
+{{trip.start}}{% if trip.finish %} to {{trip.finish}}{%endif%}
+{% if trip.contributor %} (by {{trip.contributor}}){%endif%}
+
+</a><br>
+{%endfor%}
+
+<br>
+      <br>
+      <br>
+      <br>
+<!-- TemplateEndEditable --></div>
+<div id="Layer3" style="position: absolute; width: 163px; height: 294px; z-index: 3; left: 850px; top: 182px;"><!-- TemplateBeginEditable name="Pictures and Links" --><!-- TemplateEndEditable -->
+<form action="/cgi-bin/canoemap.pl"><input type="submit" name="mapview" value="Map View" /></form>
+</div>
+<div id="Layer5">
+  <div id="latesttrip" class="bottombar"><TMPL_VAR name=LATEST>
+</div>
+  <table border="0" cellpadding="2" cellspacing="2" width="962">
+    <tbody><tr>
+      <td class="menubtnbtm" width="474"><div align="center"><a href="/siteowner.htm" class="menulnk">About the Siteowner</a> </div></td>
+      <td class="menubtnbtm" width="474"><div class="style1 style2" align="center"><a href="mailto:keith@canoedaysout.com?subject=Canoe%20Days%20Out" class="menulnk">E-mail your comments and suggestions</a> </div></td>
+    </tr>
+  </tbody></table>
+</div>
+</div></body></html>
